@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Role;
 class StudentsController extends Controller
 {
     public function __construct(){
-
+        $this->middleware('auth');
     }
     public function homeStudent()
     {
@@ -51,14 +51,6 @@ class StudentsController extends Controller
     public function resultsPage(){
         //results page
 
-        $units = Unit::orderBy('updated_at', 'DESC')->paginate(2);
-        return view('student.results')->with('units', $units);
-    }
-
-    public function unitsPage(){
-        //units page
-
-        $units = Unit::orderBy('updated_at', 'DESC')->paginate(2);
-        return view('student.units')->with('units', $units);
+        return view('student.results');
     }
 }

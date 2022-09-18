@@ -24,11 +24,14 @@
                 </div>
             </form>
             <div class="row">
-                <div class="col-sm-6 d-grid mb-3">
+                <div class="col-sm-4 d-grid mb-3">
                     <a href="{{ route('home') }}" class="btn btn-primary">Home</a>
                 </div>
-                <div class="col-sm-6 d-grid">
+                <div class="col-sm-4 d-grid mb-3">
                     <a href="{{ route('home.admin') }}" class="btn btn-primary">Admin Home</a>
+                </div>
+                <div class="col-sm-4 d-grid mb-3">
+                    <a href="{{ route('units.index') }}" class="btn btn-primary">View all units</a>
                 </div>
             </div>
         </div>

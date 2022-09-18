@@ -29,7 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name(
 //student routes
 Route::get('/student', [App\Http\Controllers\StudentsController::class, 'homeStudent'])->name('home.student');
 Route::get('/student/results', [App\Http\Controllers\StudentsController::class, 'resultsPage'])->name('student.results');
-Route::get('/student/units', [App\Http\Controllers\StudentsController::class, 'unitsPage'])->name('student.units');
 //Route::get('/student', [App\Http\Controllers\StudentController::class, 'registerPage'])->name('home.student');
 
 //admin routes
@@ -39,6 +38,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
 Route::group(['middleware' => ['role:staff|admin']], function () {
     Route::resource('units', \App\Http\Controllers\UnitController::class);
+    Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('users.all');
 });
 
 Route::group(['middleware' => ['role:student']], function () {

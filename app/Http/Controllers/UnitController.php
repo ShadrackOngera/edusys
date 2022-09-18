@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class UnitController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth', ['except' =>['index', 'show']]);
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
     /**
@@ -16,9 +17,11 @@ class UnitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(){
+        //units page
+
+        $units = Unit::orderBy('updated_at', 'DESC')->paginate(15);
+        return view('student.units')->with('units', $units);
     }
 
     /**
@@ -57,7 +60,7 @@ class UnitController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect()->back();
+        return redirect('/admin');
     }
 
     /**
@@ -102,6 +105,8 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $unit = Unit::where('id', $id)->delete();
+
+        return redirect()->back();
     }
 }

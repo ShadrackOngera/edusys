@@ -46,8 +46,8 @@
                             <div class="col-md-6">
                                 <select class="form-select @error('type') is-invalid @enderror" aria-label="Default select example" name="type" required autocomplete="type">
                                     <option selected >Select register type</option>
-                                    <option value="1">Student</option>
-                                    <option value="2">Staff</option>
+                                    <option value="student">Student</option>
+                                    <option value="staff">Staff</option>
                                 </select>
 
                                 @error('type')
