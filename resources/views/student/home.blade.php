@@ -31,11 +31,11 @@
         </div>
     </div>
     <div class="bg-primary-fade">
-        <div class="py-4"></div>
+        <div class="py-5"></div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 align-self-center text-center">
-                    <a href="#" class="btn btn-primary align-items-center">Units Registration</a>
+                    <a href="{{ route('regUnits.index') }}" class="btn btn-primary align-items-center">Units Registration</a>
                 </div>
                 <div class="col-sm-6">
                     <h2>Easily Know what to study</h2>
@@ -45,9 +45,9 @@
                 </div>
             </div>
         </div>
-        <div class="py-4"></div>
+        <div class="py-5"></div>
     </div>
-    <div class="py-2"></div>
+    <div class="py-5"></div>
     <div>
         <div class="container">
             <div class="row">
@@ -63,8 +63,9 @@
             </div>
         </div>
     </div>
+    <div class="py-5"></div>
     <div class="bg-primary-fade">
-        <div class="py-4"></div>
+        <div class="py-5"></div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 align-self-center text-center">
@@ -78,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="py-4"></div>
+        <div class="py-5"></div>
     </div>
     <div class="py-4"></div>
 @endsection

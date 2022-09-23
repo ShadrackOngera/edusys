@@ -45,9 +45,8 @@
 
                             <div class="col-md-6">
                                 <select class="form-select" aria-label="Default select example" name="type">
-                                    <option selected >Select register type</option>
-                                    <option value="1">Student</option>
-                                    <option value="2">Staff</option>
+                                    <option value="student">Student</option>
+                                    <option value="staff">Staff</option>
                                 </select>
 
                                 @error('type')

@@ -29,7 +29,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name(
 //student routes
 Route::get('/student', [App\Http\Controllers\StudentsController::class, 'homeStudent'])->name('home.student');
 Route::get('/student/results', [App\Http\Controllers\StudentsController::class, 'resultsPage'])->name('student.results');
-//Route::get('/student', [App\Http\Controllers\StudentController::class, 'registerPage'])->name('home.student');
+Route::get('/student/register', [App\Http\Controllers\RegUnitsController::class, 'index'])->name('regUnits.index');
+
+Route::resource('regUnits', \App\Http\Controllers\RegUnitsController::class);
+
 
 //admin routes
 Route::group(['middleware' => ['role:admin']], function () {
