@@ -33,12 +33,13 @@ Route::get('/student/results', [App\Http\Controllers\StudentsController::class, 
 
 //admin routes
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'homeAdmin'])->name('home.admin');
+
 });
 
 Route::group(['middleware' => ['role:staff|admin']], function () {
     Route::resource('units', \App\Http\Controllers\UnitController::class);
     Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('users.all');
+    Route::get('/admin', [App\Http\Controllers\HomeController::class, 'homeAdmin'])->name('home.admin');
 });
 
 Route::group(['middleware' => ['role:student']], function () {

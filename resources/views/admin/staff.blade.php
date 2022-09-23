@@ -14,10 +14,16 @@
                 <tbody>
                     @foreach($users as $user)
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->type }}</td>
+                            <td>
+                                @if($user->type === 1)
+                                    Student
+                                @else
+                                    Staff
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
