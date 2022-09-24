@@ -19,10 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 //pages
-Route::get('/dashboard', [App\Http\Controllers\PagesController::class, 'dashboardPage'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\ChatsController::class, 'index'])->name('dashboard');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+
+//Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('home');
+Route::get('/', [App\Http\Controllers\PagesController::class, 'home'])->name('home');
 
 
 
@@ -31,7 +33,11 @@ Route::get('/student', [App\Http\Controllers\StudentsController::class, 'homeStu
 Route::get('/student/results', [App\Http\Controllers\StudentsController::class, 'resultsPage'])->name('student.results');
 Route::get('/student/register', [App\Http\Controllers\RegUnitsController::class, 'index'])->name('regUnits.index');
 
-Route::resource('regUnits', \App\Http\Controllers\RegUnitsController::class);
+Route::resource('chats', \App\Http\Controllers\ChatsController::class);
+
+
+Route::post('/register-units/store', [App\Http\Controllers\RegUnitsController::class, 'store'])->name('regUnits.post');
+//Route::resource('regUnits', \App\Http\Controllers\RegUnitsController::class);
 
 
 //admin routes

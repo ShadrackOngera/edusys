@@ -12,8 +12,15 @@ class PagesController extends Controller
     }
 
 
-    public function dashboardPage(){
+//    public function dashboardPage(){
+//
+//        return view('pages.dashboard');
+//    }
 
-        return view('pages.dashboard');
+
+    public function home()
+    {
+
+        return view('welcome');
     }
 }

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegUnit;
-use App\Models\Unit;
+use App\Models\Chat;
 use Illuminate\Http\Request;
 
-class RegUnitsController extends Controller
+class ChatsController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +20,8 @@ class RegUnitsController extends Controller
      */
     public function index()
     {
-
-        $units = Unit::orderBy('updated_at', 'DESC')->paginate(15);
-        return view('student.register')->with('units', $units);
+        $chats = Chat::orderBy('updated_at', 'ASC')->get();
+        return view('pages.dashboard')->with('chats', $chats);
     }
 
     /**
@@ -43,26 +43,16 @@ class RegUnitsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'unit_id' => 'required',
-            'programme' => 'required',
-            'unit' => 'required',
-            'description' => 'required',
+            'message' => 'required',
         ]);
 
 
-//        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-
-        $unit = RegUnit::create([
-            'programme' => $request->input('programme'),
-            'unit' => $request->input('unit'),
-            'description' => $request->input('description'),
-            'unit_id' => $request->input('unit_id'),
-            'user_id' => auth()->user()->id,
+        $chat = Chat::create([
+            'message' => $request->input('message'),
+            'sender_id' => auth()->user()->id,
         ]);
 
-
-
-        return redirect()->back();
+        return redirect('/dashboard');
     }
 
     /**
@@ -96,22 +86,7 @@ class RegUnitsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'unit_id' => 'required',
-            'programme' => 'required',
-            'unit' => 'required',
-            'description' => 'required',
-        ]);
-
-//        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
-
-        $unit = Unit::create([
-            'programme' => $request->input('programme'),
-            'unit' => $request->input('unit'),
-            'description' => $request->input('description'),
-            'unit_id' => $request->input('unit_id'),
-            'user_id' => auth()->user()->id,
-        ]);
+        //
     }
 
     /**

@@ -21,10 +21,12 @@
                             <td>{{ $unit->description }}</td>
                             <td>
                                 <form action="{{ route('regUnits.post') }}" method="POST">
-                                    <input type="number" hidden value="{{ $unit->id }}" name="unit_id">
+                                    @csrf
+                                    <input type="text" hidden value="{{ $unit->id }}" name="unit_id">
                                     <input type="text" hidden value="{{ $unit->programme }}" name="programme">
                                     <input type="text" hidden value="{{ $unit->unit }}" name="unit">
                                     <input type="text" hidden value="{{ $unit->description }}" name="description">
+
                                     <button type="submit" class="btn btn-outline-warning">
                                         Register
                                     </button>

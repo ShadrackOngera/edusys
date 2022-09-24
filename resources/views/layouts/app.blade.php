@@ -25,6 +25,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <section>
+            @include('partials.footer')
+        </section>
     </div>
 </body>
 </html>

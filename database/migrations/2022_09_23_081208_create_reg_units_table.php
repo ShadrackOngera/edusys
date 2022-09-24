@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->default(1);
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('programme');
-            $table->string('unit');
+            $table->text('unit');
             $table->string('description');
             $table->timestamps();
         });

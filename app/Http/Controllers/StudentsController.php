@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RegUnit;
 use App\Models\Unit;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class StudentsController extends Controller
     public function resultsPage(){
         //results page
 
-        return view('student.results');
+        $results = RegUnit::orderBy('updated_at', 'DESC')->where('user_id', auth()->user()->id)->paginate(15);
+        return view('student.results')->with('results', $results);
     }
 }

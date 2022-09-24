@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RegUnit extends Model
+class Chat extends Model
 {
     protected $fillable = [
-        'user_id',
-        'unit_id',
-        'programme',
-        'unit',
-        'description',
+        'sender_id',
+        'message',
     ];
 
     use HasFactory;
