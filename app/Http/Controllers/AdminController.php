@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chat;
+use App\Models\RegUnit;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,30 @@ class AdminController extends Controller
         return view('admin.staff')->with('users', $users);
     }
 
-    public function allchats(){
+    public function allChats(){
 
-        $chats = Chat::orderBy('updated_at', 'DESC')->get();
+        $chats = Chat::latest('updated_at')->get()->groupBy('sender_id');
+
         return view('admin.chats')->with('chats', $chats );
+    }
+
+    public function allRegisterdUnits(){
+
+        $regUNits = RegUnit::orderBy('updated_at', 'DESC')->with('user')->get();
+        return view('admin.regUnits')->with('regUnits', $regUNits );
+    }
+
+    public function makeAdmin(Request $request){
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+
+        $userId = $request->input('user_id');
+        $user = User::where('id', $userId)->first();
+        $user->assignRole('admin');
+
+        $msg = 'User Id '. $userId . ' Is now an Admin ';
+
+        return redirect('/admin/users')->with('message', $msg);
     }
 }

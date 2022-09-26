@@ -16,4 +16,24 @@ class RegUnit extends Model
     ];
 
     use HasFactory;
+
+    /**
+     * Get the comments for the blog post.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('programme');
             $table->text('unit');
             $table->string('description');
+            $table->integer('score')->nullable();
             $table->timestamps();
         });
     }

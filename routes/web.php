@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 //pages
 Route::get('/dashboard', [App\Http\Controllers\ChatsController::class, 'index'])->name('dashboard');
+Route::get('/admin/chats', [App\Http\Controllers\AdminController::class, 'allChats'])->name('admin.chats');
 
 
 
@@ -37,17 +38,19 @@ Route::resource('chats', \App\Http\Controllers\ChatsController::class);
 
 
 Route::post('/register-units/store', [App\Http\Controllers\RegUnitsController::class, 'store'])->name('regUnits.post');
+Route::put('/register-units/{id}/update', [App\Http\Controllers\RegUnitsController::class, 'update'])->name('regUnits.update');
 //Route::resource('regUnits', \App\Http\Controllers\RegUnitsController::class);
 
 
 //admin routes
 Route::group(['middleware' => ['role:admin']], function () {
-
+    Route::get('/admin/makeAdmin', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('make.admin');
 });
 
 Route::group(['middleware' => ['role:staff|admin']], function () {
     Route::resource('units', \App\Http\Controllers\UnitController::class);
     Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('users.all');
+    Route::get('/admin/registered', [App\Http\Controllers\AdminController::class, 'allRegisterdUnits'])->name('regUNits.all');
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'homeAdmin'])->name('home.admin');
 });
 

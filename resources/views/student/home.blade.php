@@ -70,7 +70,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 align-self-center text-center">
-                    <a href="#" class="btn btn-primary">View my Dashboard</a>
+                    <a href="{{ route('dashboard') }}" class="btn btn-primary">View my Dashboard</a>
                 </div>
                 <div class="col-sm-6">
                     <h2>View Your Progress in one page</h2>

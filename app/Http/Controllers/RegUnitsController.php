@@ -38,7 +38,7 @@ class RegUnitsController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -47,6 +47,7 @@ class RegUnitsController extends Controller
             'programme' => 'required',
             'unit' => 'required',
             'description' => 'required',
+            'score' => ['min:1',],
         ]);
 
 
@@ -57,6 +58,7 @@ class RegUnitsController extends Controller
             'unit' => $request->input('unit'),
             'description' => $request->input('description'),
             'unit_id' => $request->input('unit_id'),
+            'score' => $request->input('score'),
             'user_id' => auth()->user()->id,
         ]);
 
@@ -92,36 +94,33 @@ class RegUnitsController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'unit_id' => 'required',
-            'programme' => 'required',
-            'unit' => 'required',
-            'description' => 'required',
-        ]);
+        RegUnit::where('id', $id)
+            ->update([
+                'unit_id' => $request->input('unit_id'),
+                'programme' => $request->input('programme'),
+                'unit' => $request->input('unit'),
+                'description' => $request->input('description'),
+                'score' => $request->input('score'),
+            ]);
 
-//        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
 
-        $unit = Unit::create([
-            'programme' => $request->input('programme'),
-            'unit' => $request->input('unit'),
-            'description' => $request->input('description'),
-            'unit_id' => $request->input('unit_id'),
-            'user_id' => auth()->user()->id,
-        ]);
+        return redirect()->back()->with('message', 'Your Post has been Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
-        //
+        $post = RegUnit::where('id', $id)->delete();
+
+        return redirect()->back()->with('message', 'Your Post has been Deleted');
     }
 }

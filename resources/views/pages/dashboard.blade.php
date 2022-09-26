@@ -6,7 +6,7 @@
             <h3>{{ Auth::user()->name }}</h3>
         </div>
     </div>
-    <div>
+    <div class="">
         <div class="container">
             <div class="col-sm-7">
                 <div class="card">
