@@ -78,6 +78,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="py-5"></div>
+            <div class="">
+                <button onclick="window.print()" class="btn btn-outline-indigo float-end">Print this page</button>
+            </div>
         </div>
     </div>
+
 @endsection
