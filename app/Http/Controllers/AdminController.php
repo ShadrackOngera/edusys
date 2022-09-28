@@ -21,7 +21,7 @@ class AdminController extends Controller
 
     public function allChats(){
 
-        $chats = Chat::latest('updated_at')->get()->groupBy('sender_id');
+        $chats = Chat::orderBy('updated_at', 'ASC')->get()->groupBy('chat_id');
 
         return view('admin.chats')->with('chats', $chats );
     }
@@ -37,11 +37,26 @@ class AdminController extends Controller
             'user_id' => 'required',
         ]);
 
+
         $userId = $request->input('user_id');
         $user = User::where('id', $userId)->first();
         $user->assignRole('admin');
 
         $msg = 'User Id '. $userId . ' Is now an Admin ';
+
+        return redirect('/admin/users')->with('message', $msg);
+    }
+
+    public function makeStaff(Request $request){
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+
+        $userId = $request->input('user_id');
+        $user = User::where('id', $userId)->first();
+        $user->assignRole('staff');
+
+        $msg = 'User Id '. $userId . ' Is now Staff ';
 
         return redirect('/admin/users')->with('message', $msg);
     }

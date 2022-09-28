@@ -15,7 +15,7 @@
                     </div>
                     <div class="card-body">
                         @foreach($chats as $chat)
-                            @if($chat->sender_id == auth()->user()->id)
+                            @if($chat->chat_id == auth()->user()->id)
                                 <div>
                                     @if($chat->sender_id  == auth()->user()->id)
                                         <span class="float-end">{{ $chat->message }}</span><br>
@@ -30,7 +30,7 @@
                             <form action="{{ route('chats.store') }}" method="POST">
                                 @csrf
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" name="message" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control" placeholder="Send Message" aria-label="Recipient's username" name="message" aria-describedby="button-addon2">
                                     <button class="btn btn-secondary" type="submit" id="button-addon2">
                                         Submit
                                     </button>

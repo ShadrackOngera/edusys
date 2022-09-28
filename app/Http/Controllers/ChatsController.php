@@ -44,13 +44,36 @@ class ChatsController extends Controller
     {
         $request->validate([
             'message' => 'required',
-            'sender_id' => 'required',
         ]);
 
 
         $chat = Chat::create([
             'message' => $request->input('message'),
-            'sender_id' => $request->input('sender_id'),
+            'sender_id' => auth()->user()->id,
+            'chat_id' => auth()->user()->id,
+        ]);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function adminStore(Request $request)
+    {
+        $request->validate([
+            'message' => 'required',
+            'chat_id' => 'required',
+        ]);
+
+
+        $chat = Chat::create([
+            'message' => $request->input('message'),
+            'chat_id' => $request->input('chat_id'),
+            'sender_id' => auth()->user()->id,
         ]);
 
         return redirect()->back();

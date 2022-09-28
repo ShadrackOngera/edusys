@@ -27,14 +27,15 @@ class RolesSeeder extends Seeder
         $editUnitPermission = Permission::create(['name' => 'edit unit']);
         $deleteUnitPermission = Permission::create(['name' => 'delete unit']);
 
-        //Account permissions
-        $makeStaffPermission = Permission::create(['name' => 'make staff']);
-        $makeAdminPermission = Permission::create(['name' => 'make admin']);
 
         //Results Permissions
         $createResultPermission = Permission::create(['name' => 'create result']);
         $editResultPermission = Permission::create(['name' => 'edit result']);
         $deleteResultPermission = Permission::create(['name' => 'delete result']);
+
+        //Account permissions
+        $makeStaffPermission = Permission::create(['name' => 'make staff']);
+        $makeAdminPermission = Permission::create(['name' => 'make admin']);
 
         //Assigning Staff Permissions
         $staffRole->givePermissionTo($createUnitPermission);

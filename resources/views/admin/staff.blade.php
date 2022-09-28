@@ -1,5 +1,14 @@
 @extends('layouts.app')
 @section('content')
+    <div class="container">
+        <div class="align-items-center">
+            @if (\Session::has('message'))
+                <div class="alert alert-success">
+                    {!! \Session::get('message') !!}
+                </div>
+            @endif
+        </div>
+    </div>
     <div style="min-height: 70vh">
         <div class="container">
             <table class="table">
@@ -10,6 +19,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Account Type</th>
                         @can('make admin')
+                            <th scope="col">Make Staff</th>
                             <th scope="col">Make Admin</th>
                         @endcan
                     </tr>
@@ -23,10 +33,21 @@
                             <td>{{ $user->type }}</td>
                             @can('make admin')
                                 <td>
-                                    <form action="{{ route('make.admin') }}">
-                                        <input type="text" hidden value="{{ $user->id }}">
+                                    <form action="{{ route('make.staff') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" value="{{ $user->id }}" name="user_id">
                                         <button type="Submit" class="btn btn-orange">
-                                            MAke Admin
+                                            Make Staff
+                                        </button>
+                                    </form>
+                                </td>
+
+                                <td>
+                                    <form action="{{ route('make.admin') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" value="{{ $user->id }}" name="user_id">
+                                        <button type="Submit" class="btn btn-orange">
+                                            Make Admin
                                         </button>
                                     </form>
                                 </td>

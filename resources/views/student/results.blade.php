@@ -13,6 +13,7 @@
                         <th scope="col">Unit Code</th>
                         <th scope="col">Description</th>
                         <th scope="col">score (<span class="fst-italic"> x/100 </span>)</th>
+                        <th scope="col">Grade</th>
                         <th scope="col">Comment</th>
                         @can('create result')
                             <th scope="col">Update Score</th>
@@ -29,6 +30,19 @@
                             <td>{{ $result->description }}</td>
                             <td>
                                 {{ $result->score }}
+                            </td>
+                            <td>
+                                @if($result->score == null)
+                                    <span>Not Graded</span>
+                                @elseif($result->score < 40)
+                                    <span>E</span>
+                                @elseif($result->score < 50)
+                                    <span>D</span>
+                                @elseif($result->score < 60)
+                                    <span>C</span>
+                                @elseif($result->score < 100)
+                                    <span>A</span>
+                                @endif
                             </td>
                             <td>
                                 @if($result->score == null)

@@ -44,10 +44,12 @@ Route::put('/register-units/{id}/update', [App\Http\Controllers\RegUnitsControll
 
 //admin routes
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::get('/admin/makeAdmin', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('make.admin');
+    Route::post('/admin/chats-store', [App\Http\Controllers\ChatsController::class, 'adminStore'])->name('chats.adminStore');
 });
 
 Route::group(['middleware' => ['role:staff|admin']], function () {
+    Route::post('/admin/makeAdmin', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('make.admin');
+    Route::post('/admin/make-staff', [App\Http\Controllers\AdminController::class, 'makeStaff'])->name('make.staff');
     Route::resource('units', \App\Http\Controllers\UnitController::class);
     Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('users.all');
     Route::get('/admin/registered', [App\Http\Controllers\AdminController::class, 'allRegisterdUnits'])->name('regUNits.all');
