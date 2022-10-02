@@ -32,6 +32,7 @@ Route::get('/how-to', [App\Http\Controllers\PagesController::class, 'howPage'])-
 
 //student routes
 Route::get('/student', [App\Http\Controllers\StudentsController::class, 'homeStudent'])->name('home.student');
+Route::get('/results/export', [App\Http\Controllers\StudentsController::class, 'exportPdf'])->name('export.results');
 Route::get('/student/results', [App\Http\Controllers\StudentsController::class, 'resultsPage'])->name('student.results');
 Route::get('/student/register', [App\Http\Controllers\RegUnitsController::class, 'index'])->name('regUnits.index');
 

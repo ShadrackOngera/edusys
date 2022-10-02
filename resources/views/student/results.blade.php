@@ -97,6 +97,7 @@
                 </tbody>
             </table>
             <div class="py-5"></div>
+            <a href="{{ route('export.results') }}">Export to pdf</a>
             <div class="">
                 <button onclick="window.print()" class="btn btn-outline-indigo float-end">Print this page</button>
             </div>
