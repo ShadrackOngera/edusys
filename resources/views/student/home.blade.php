@@ -83,4 +83,16 @@
         <div class="py-5"></div>
     </div>
     <div class="py-4"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-8 align-self-center text-center">
+                <h2>Have difficulty using our system?</h2>
+                <p>
+                    Feel free to leave a message for us on your <a href="{{ route('dashboard') }}">Dashboard</a> or read through our
+                    <a href="{{ route('how') }}">How-to Guide</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="py-5"></div>
 @endsection

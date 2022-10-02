@@ -28,6 +28,7 @@ Route::get('/admin/chats', [App\Http\Controllers\AdminController::class, 'allCha
 Route::get('/', [App\Http\Controllers\PagesController::class, 'home'])->name('home');
 
 
+Route::get('/how-to', [App\Http\Controllers\PagesController::class, 'howPage'])->name('how');
 
 //student routes
 Route::get('/student', [App\Http\Controllers\StudentsController::class, 'homeStudent'])->name('home.student');
@@ -39,6 +40,7 @@ Route::resource('chats', \App\Http\Controllers\ChatsController::class);
 
 Route::post('/register-units/store', [App\Http\Controllers\RegUnitsController::class, 'store'])->name('regUnits.post');
 Route::put('/register-units/{id}/update', [App\Http\Controllers\RegUnitsController::class, 'update'])->name('regUnits.update');
+Route::delete('/register-units/{id}/deregister', [App\Http\Controllers\RegUnitsController::class, 'destroy'])->name('regUnits.destroy');
 //Route::resource('regUnits', \App\Http\Controllers\RegUnitsController::class);
 
 

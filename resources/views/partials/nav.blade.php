@@ -43,6 +43,18 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a href="{{ route('home.student') }}" class="dropdown-item">
+                                {{ __('Main Home') }}
+                            </a>
+                            <a href="{{ route('home') }}" class="dropdown-item">
+                                {{ __('Student Home') }}
+                            </a>
+                            <a href="{{ route('regUnits.index') }}" class="dropdown-item">
+                                {{ __('Register Units') }}
+                            </a>
+                            <a href="{{ route('student.results') }}" class="dropdown-item">
+                                {{ __('View Results') }}
+                            </a>
                             <a href="{{ route('dashboard') }}" class="dropdown-item">
                                 {{ __('Dashboard') }}
                             </a>
