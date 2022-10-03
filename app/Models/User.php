@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->roles->pluck( 'name' )->contains( 'admin' );
     }
+
+    public function regUnit()
+    {
+        return $this->hasMany(RegUnit::class);
+    }
 }

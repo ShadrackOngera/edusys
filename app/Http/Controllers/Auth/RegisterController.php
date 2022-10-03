@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -25,11 +26,31 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * The user has been registered.
      *
-     * @var string
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function registered(Request $request, $user)
+    {
+        if($user->role == 'admin'){
+//            $this->redirectTo = RouteServiceProvider::ADMIN;
+
+            return redirect()->route('home.admin');
+        }
+        else
+//            $this->redirectTo = RouteServiceProvider::STUDENT;
+
+        return redirect()->route('home.student');
+    }
+
+//    /**
+//     * Where to redirect users after registration.
+//     *
+//     * @var string
+//     */
+//    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.

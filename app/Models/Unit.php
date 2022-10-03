@@ -15,4 +15,9 @@ class Unit extends Model
         'description',
         'user_id',
     ];
+
+    public function regUnit()
+    {
+        return $this->hasOne(RegUnit::class);
+    }
 }

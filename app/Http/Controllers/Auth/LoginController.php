@@ -43,6 +43,27 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+//    protected function authenticated(Request $request, $user)
+//    {
+//
+//        if ($user->hasRole('admin')) {
+//            $redirect = route('home.admin');
+//
+//        } else
+//
+//            $redirect = route('home.student');
+//
+//        return $redirect;
+//    }
+
+
     public function login_post( Request $request )
     {
         $data = Input::except( array( '_token' ) );
@@ -63,14 +84,14 @@ class LoginController extends Controller
             // $data = Input::except( array( '_token' ) );
 
             if (Auth::attempt( $data )) {
-                // here i want to check logged in user role
+                // here I want to check logged in user role
                 $user = Auth::user();
 
                 if ($user->roles->pluck( 'name' )->contains( 'admin' )) {
-                    return Redirect::to( '/admin-dashboard' );
+                    return Redirect::to( '/admin' );
                 }
 
-                return Redirect::to( '/dashboard' );
+                return Redirect::to( '/student' );
             }
         }
     }

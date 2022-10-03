@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\RegUnit;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -14,6 +15,12 @@ class AdminController extends Controller
     }
 
     public function allUsers(){
+
+
+//        $user = auth()->user();
+//        $user->hasAllRoles(Role::all());
+//
+//        return $user;
 
         $users = User::orderBy('updated_at', 'DESC')->get();
         return view('admin.staff')->with('users', $users);

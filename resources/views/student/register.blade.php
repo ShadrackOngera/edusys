@@ -27,9 +27,15 @@
                                     <input type="text" hidden value="{{ $unit->unit }}" name="unit">
                                     <input type="text" hidden value="{{ $unit->description }}" name="description">
 
-                                    <button type="submit" class="btn btn-outline-warning">
-                                        Register
-                                    </button>
+                                    @if($unit->regUnit()->exists())
+                                        <button type="submit" class="btn btn-outline-warning disabled">
+                                            Registered
+                                        </button>
+                                    @else
+                                        <button type="submit" class="btn btn-outline-warning">
+                                            Register
+                                        </button>
+                                    @endif
                                 </form>
                             </td>
                         </tr>

@@ -25,15 +25,8 @@ class RegUnit extends Model
         return $this->belongsTo(User::class);
     }
 
-
-
-
-
-
-
-
-
-
-
-
+    public function unit()
+    {
+        return $this->belongsTo(RegUnit::class);
+    }
 }

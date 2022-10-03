@@ -21,6 +21,7 @@ class RegUnitsController extends Controller
     {
 
         $units = Unit::orderBy('updated_at', 'DESC')->paginate(15);
+
         return view('student.register')->with('units', $units);
     }
 
