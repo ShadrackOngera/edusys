@@ -22,7 +22,7 @@ class AdminController extends Controller
 //
 //        return $user;
 
-        $users = User::orderBy('updated_at', 'DESC')->get();
+        $users = User::orderBy('updated_at', 'DESC')->paginate(20);
         return view('admin.staff')->with('users', $users);
     }
 

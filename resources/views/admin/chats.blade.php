@@ -37,4 +37,9 @@
             @endforeach
         </div>
     </div>
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            {!! $chats->links("pagination::bootstrap-4") !!}
+        </div>
+    </div>
 @endsection
