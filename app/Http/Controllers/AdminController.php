@@ -28,7 +28,7 @@ class AdminController extends Controller
 
     public function allChats(){
 
-        $chats = Chat::orderBy('updated_at', 'ASC')->get()->groupBy('chat_id');
+        $chats = Chat::orderBy('updated_at', 'ASC')->paginate(10)->groupBy('chat_id');
 
         return view('admin.chats')->with('chats', $chats );
     }

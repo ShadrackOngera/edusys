@@ -58,23 +58,17 @@
                                     <span>Excellent</span>
                                 @endif
                             </td>
-                            @if($result->score == null)
-                                <td>
-                                    <form action="{{ route('regUnits.destroy', $result->id) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-outline-danger">
-                                            De-Register Unit
-                                        </button>
-                                    </form>
-                                </td>
-                            @else
-                                <td>
-                                    <button class="btn btn-outline-danger disabled">
-                                        De-Register Unit
-                                    </button>
-                                </td>
-                            @endif
+{{--                            @if($result->score == null)--}}
+{{--                                <td>--}}
+{{--                                    --}}
+{{--                                </td>--}}
+{{--                            @else--}}
+{{--                                <td>--}}
+{{--                                    <button class="btn btn-outline-danger disabled">--}}
+{{--                                        De-Register Unit--}}
+{{--                                    </button>--}}
+{{--                                </td>--}}
+{{--                            @endif--}}
                             @can('create result')
                                     <td>
                                         <form action="{{ route('regUnits.update', $result->id) }}" method="POST">

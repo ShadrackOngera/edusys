@@ -32,8 +32,8 @@ class RegisterController extends Controller
      * @param  mixed  $user
      * @return mixed
      */
-    protected function registered(Request $request, $user)
-    {
+//    protected function registered(Request $request, $user)
+//    {
 //        if($user->role == 'admin'){
 ////            $this->redirectTo = RouteServiceProvider::ADMIN;
 //
@@ -42,8 +42,8 @@ class RegisterController extends Controller
 //        else
 ////            $this->redirectTo = RouteServiceProvider::STUDENT;
 
-        return redirect()->route('home.student');
-    }
+//        return redirect()->route('home.student');
+//    }
 
 //    /**
 //     * Where to redirect users after registration.

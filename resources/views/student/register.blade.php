@@ -20,23 +20,27 @@
                             <td>{{ $unit->unit }}</td>
                             <td>{{ $unit->description }}</td>
                             <td>
-                                <form action="{{ route('regUnits.post') }}" method="POST">
-                                    @csrf
-                                    <input type="text" hidden value="{{ $unit->id }}" name="unit_id">
-                                    <input type="text" hidden value="{{ $unit->programme }}" name="programme">
-                                    <input type="text" hidden value="{{ $unit->unit }}" name="unit">
-                                    <input type="text" hidden value="{{ $unit->description }}" name="description">
-
-                                    @if($unit->regUnit()->where('user_id', auth()->user()->id)->exists())
-                                        <button type="submit" class="btn btn-outline-warning disabled">
-                                            Registered
+                                @if($unit->regUnit()->where('user_id', auth()->user()->id)->exists())
+                                    <form action="{{ route('regUnits.destroy', $unit->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-outline-danger">
+                                            De-Register Unit
                                         </button>
-                                    @else
+                                    </form>
+                                @else
+                                    <form action="{{ route('regUnits.post') }}" method="POST">
+                                        @csrf
+                                        <input type="text" hidden value="{{ $unit->id }}" name="unit_id">
+                                        <input type="text" hidden value="{{ $unit->programme }}" name="programme">
+                                        <input type="text" hidden value="{{ $unit->unit }}" name="unit">
+                                        <input type="text" hidden value="{{ $unit->description }}" name="description">
+
                                         <button type="submit" class="btn btn-outline-warning">
                                             Register
                                         </button>
-                                    @endif
-                                </form>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

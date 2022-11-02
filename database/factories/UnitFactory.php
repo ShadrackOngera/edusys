@@ -18,10 +18,10 @@ class UnitFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'programme' => $this->faker->word(),
-            'unit' => $this->faker->numberBetween(1111,5555),
-            'description' => $this->faker->sentence(5),
-        ];
+//        return [
+//            'programme' => $this->faker->word(),
+//            'unit' => $this->faker->numberBetween(1111,5555),
+//            'description' => $this->faker->sentence(5),
+//        ];
     }
 }
