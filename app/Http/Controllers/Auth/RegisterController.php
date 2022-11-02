@@ -34,13 +34,13 @@ class RegisterController extends Controller
      */
     protected function registered(Request $request, $user)
     {
-        if($user->role == 'admin'){
-//            $this->redirectTo = RouteServiceProvider::ADMIN;
-
-            return redirect()->route('home.admin');
-        }
-        else
-//            $this->redirectTo = RouteServiceProvider::STUDENT;
+//        if($user->role == 'admin'){
+////            $this->redirectTo = RouteServiceProvider::ADMIN;
+//
+//            return redirect()->route('home.admin');
+//        }
+//        else
+////            $this->redirectTo = RouteServiceProvider::STUDENT;
 
         return redirect()->route('home.student');
     }

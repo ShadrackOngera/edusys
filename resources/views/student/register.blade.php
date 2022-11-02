@@ -27,7 +27,7 @@
                                     <input type="text" hidden value="{{ $unit->unit }}" name="unit">
                                     <input type="text" hidden value="{{ $unit->description }}" name="description">
 
-                                    @if($unit->regUnit()->exists())
+                                    @if($unit->regUnit()->where('user_id', auth()->user()->id)->exists())
                                         <button type="submit" class="btn btn-outline-warning disabled">
                                             Registered
                                         </button>
