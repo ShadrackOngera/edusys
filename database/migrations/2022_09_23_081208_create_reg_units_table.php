@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('reg_units', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('unit_id')->default(1);
-            $table->foreign('unit_id')->references('id')->on('units');
+            $table->foreign('unit_id')->references('id')->on('units')->onDelete('cascade');
             $table->unsignedBigInteger('user_id')->default(1);
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('programme');
             $table->text('unit');
             $table->string('description');
