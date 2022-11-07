@@ -39,7 +39,17 @@ Route::group(['middleware' => ['role:staff|admin']], function () {
     Route::post('/admin/makeAdmin', [App\Http\Controllers\AdminController::class, 'makeAdmin'])->name('make.admin');
     Route::post('/admin/makeStudent', [App\Http\Controllers\AdminController::class, 'makeStudent'])->name('make.student');
     Route::post('/admin/make-staff', [App\Http\Controllers\AdminController::class, 'makeStaff'])->name('make.staff');
-    Route::resource('units', \App\Http\Controllers\UnitController::class);
+
+    //units
+    Route::get('/admin/units', [App\Http\Controllers\UnitController::class, 'index'])->name('units.index');
+    Route::get('/admin/units/{id}/edit', [App\Http\Controllers\UnitController::class, 'edit'])->name('units.edit');
+    Route::post('/admin/units/create', [App\Http\Controllers\UnitController::class, 'create'])->name('units.create');
+    Route::put('/admin/units/{id}/edit', [App\Http\Controllers\UnitController::class, 'update'])->name('units.update');
+    Route::post('/admin/units/store', [App\Http\Controllers\UnitController::class, 'store'])->name('units.store');
+    Route::delete('/admin/units/{id}/delete', [App\Http\Controllers\UnitController::class, 'destroy'])->name('units.destroy');
+//    Route::resource('units', \App\Http\Controllers\UnitController::class);
+
+
     Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('users.all');
     Route::get('/admin/registered', [App\Http\Controllers\AdminController::class, 'allRegisterdUnits'])->name('regUNits.all');
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'homeAdmin'])->name('home.admin');

@@ -36,9 +36,9 @@
                                 <td>{{ $unit->description }}</td>
                                 @can('edit unit')
                                     <td>
-                                        <button class="btn btn-secondary">
+                                        <a href="{{ route('units.edit', $unit->id) }}" class="btn btn-secondary">
                                             Edit
-                                        </button>
+                                        </a>
                                     </td>
                                 @endcan
                                 @can('delete unit')
