@@ -15,7 +15,6 @@
                         <th scope="col">score (<span class="fst-italic"> x/100 </span>)</th>
                         <th scope="col">Grade</th>
                         <th scope="col">Comment</th>
-                        <th scope="col">Deregister</th>
                         @can('create result')
                             <th scope="col">Update Score</th>
                         @endcan

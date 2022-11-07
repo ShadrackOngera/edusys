@@ -15,9 +15,11 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home.student') }}">Student Home</a>
-                </li>
+                @can('is student')
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home.student') }}">Student Home</a>
+                    </li>
+                @endcan
                 @can('create unit')
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('home.admin') }}">Admin Home</a>
@@ -46,9 +48,11 @@
                             <a href="{{ route('home') }}" class="dropdown-item">
                                 {{ __('Main Home') }}
                             </a>
-                            <a href="{{ route('home.student') }}" class="dropdown-item">
-                                {{ __('Student Home') }}
-                            </a>
+                           @can('is student')
+                                <a href="{{ route('home.student') }}" class="dropdown-item">
+                                    {{ __('Student Home') }}
+                                </a>
+                            @endcan
                             <a href="{{ route('regUnits.index') }}" class="dropdown-item">
                                 {{ __('Register Units') }}
                             </a>

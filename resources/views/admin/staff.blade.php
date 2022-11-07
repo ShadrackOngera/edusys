@@ -21,6 +21,7 @@
                         @can('make admin')
                             <th scope="col">Make Staff</th>
                             <th scope="col">Make Admin</th>
+                            <th scope="col">Make Student</th>
                         @endcan
                     </tr>
                 </thead>
@@ -48,6 +49,15 @@
                                         <input type="hidden" value="{{ $user->id }}" name="user_id">
                                         <button type="Submit" class="btn btn-orange">
                                             Make Admin
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{{ route('make.student') }}" method="post">
+                                        @csrf
+                                        <input type="hidden" value="{{ $user->id }}" name="user_id">
+                                        <button type="Submit" class="btn btn-success text-white">
+                                            Make Student
                                         </button>
                                     </form>
                                 </td>

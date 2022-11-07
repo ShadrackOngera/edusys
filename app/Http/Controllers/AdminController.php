@@ -54,6 +54,21 @@ class AdminController extends Controller
         return redirect('/admin/users')->with('message', $msg);
     }
 
+    public function makeStudent(Request $request){
+        $request->validate([
+            'user_id' => 'required',
+        ]);
+
+
+        $userId = $request->input('user_id');
+        $user = User::where('id', $userId)->first();
+        $user->assignRole('student');
+
+        $msg = 'User Id '. $userId . ' Now Has access to student routes ';
+
+        return redirect('/admin/users')->with('message', $msg);
+    }
+
     public function makeStaff(Request $request){
         $request->validate([
             'user_id' => 'required',

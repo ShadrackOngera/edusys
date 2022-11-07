@@ -46,9 +46,6 @@ class RolesSeeder extends Seeder
         $adminRole->givePermissionTo($createUnitPermission);
         $adminRole->givePermissionTo($editUnitPermission);
         $adminRole->givePermissionTo($deleteUnitPermission);
-        $adminRole->givePermissionTo($createResultPermission);
-        $adminRole->givePermissionTo($editResultPermission);
-        $adminRole->givePermissionTo($deleteResultPermission);
         $adminRole->givePermissionTo($makeStaffPermission);
         $adminRole->givePermissionTo($makeAdminPermission);
 
