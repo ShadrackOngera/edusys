@@ -47,6 +47,7 @@ class AdminController extends Controller
 
         $userId = $request->input('user_id');
         $user = User::where('id', $userId)->first();
+        $user->roles()->detach();
         $user->assignRole('admin');
 
         $msg = 'User Id '. $userId . ' Is now an Admin ';
@@ -62,6 +63,7 @@ class AdminController extends Controller
 
         $userId = $request->input('user_id');
         $user = User::where('id', $userId)->first();
+        $user->roles()->detach();
         $user->assignRole('student');
 
         $msg = 'User Id '. $userId . ' Now Has access to student routes ';
@@ -76,6 +78,7 @@ class AdminController extends Controller
 
         $userId = $request->input('user_id');
         $user = User::where('id', $userId)->first();
+        $user->roles()->detach();
         $user->assignRole('staff');
 
         $msg = 'User Id '. $userId . ' Is now Staff ';

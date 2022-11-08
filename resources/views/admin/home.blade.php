@@ -6,9 +6,11 @@
                 <div class="col-sm-3">
                     <h3 class="text-center">Quick Links</h3>
                     <div class="d-grid">
-                        <a href="{{ route('units.index') }}" class="btn btn-outline-info mb-3">View All Units</a>
+                        @can('create unit')
+                            <a href="{{ route('units.index') }}" class="btn btn-outline-info mb-3">View All Units</a>
 
-                        <a href="{{ route('users.all') }}" class="btn btn-outline-info mb-3">View All Users</a>
+                            <a href="{{ route('users.all') }}" class="btn btn-outline-info mb-3">View All Users</a>
+                        @endcan
 
                         <a href="{{ route('admin.chats') }}" class="btn btn-outline-info mb-3">View All Chats</a>
 

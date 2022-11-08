@@ -28,6 +28,10 @@ class RolesSeeder extends Seeder
         $deleteUnitPermission = Permission::create(['name' => 'delete unit']);
 
 
+        //student permission
+        $studentPermission = Permission::create(['name' => 'is student']);
+
+
         //Results Permissions
         $createResultPermission = Permission::create(['name' => 'create result']);
         $editResultPermission = Permission::create(['name' => 'edit result']);
@@ -38,9 +42,13 @@ class RolesSeeder extends Seeder
         $makeAdminPermission = Permission::create(['name' => 'make admin']);
 
         //Assigning Staff Permissions
-        $staffRole->givePermissionTo($createUnitPermission);
-        $staffRole->givePermissionTo($editUnitPermission);
+        $staffRole->givePermissionTo($deleteResultPermission);
+        $staffRole->givePermissionTo($editResultPermission);
         $staffRole->givePermissionTo($createResultPermission);
+
+
+        //student permission assign
+        $studentRole->givePermissionTo($studentPermission);
 
         //Assigning admin Permissions
         $adminRole->givePermissionTo($createUnitPermission);

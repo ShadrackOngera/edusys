@@ -25,6 +25,12 @@
                         <a class="nav-link" href="{{ route('home.admin') }}">Admin Home</a>
                     </li>
                 @endcan
+
+                    @can('create result')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('home.admin') }}">Staff Home</a>
+                        </li>
+                        @endcan
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
@@ -52,13 +58,15 @@
                                 <a href="{{ route('home.student') }}" class="dropdown-item">
                                     {{ __('Student Home') }}
                                 </a>
+
+                                <a href="{{ route('regUnits.index') }}" class="dropdown-item">
+                                    {{ __('Register Units') }}
+                                </a>
+
+                                <a href="{{ route('student.results') }}" class="dropdown-item">
+                                    {{ __('View Results') }}
+                                </a>
                             @endcan
-                            <a href="{{ route('regUnits.index') }}" class="dropdown-item">
-                                {{ __('Register Units') }}
-                            </a>
-                            <a href="{{ route('student.results') }}" class="dropdown-item">
-                                {{ __('View Results') }}
-                            </a>
                             <a href="{{ route('dashboard') }}" class="dropdown-item">
                                 {{ __('Dashboard') }}
                             </a>

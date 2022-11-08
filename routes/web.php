@@ -29,6 +29,10 @@ Route::group(['middleware' => ['role:student']], function () {
     Route::get('/student/register', [App\Http\Controllers\RegUnitsController::class, 'index'])->name('regUnits.index');
 });
 
+Route::group(['middleware' => ['role:staff']], function () {
+
+});
+
 
 //admin routes
 Route::group(['middleware' => ['role:admin']], function () {
