@@ -20,7 +20,7 @@ class RegUnitsController extends Controller
     public function index()
     {
 
-        $units = Unit::orderBy('updated_at', 'DESC')->paginate(15);
+        $units = Unit::orderBy('updated_at', 'DESC')->with(['regUnit'])->paginate(15);
 
         return view('student.register')->with('units', $units);
     }
@@ -120,8 +120,10 @@ class RegUnitsController extends Controller
      */
     public function destroy($id)
     {
-        $post = RegUnit::where('id', $id)->delete();
 
-        return redirect()->back()->with('message', 'Your Post has been Deleted');
+        $regUnit = RegUnit::where('id', $id)->delete();
+
+        $msg = 'Your Post has been Deleted';
+        return redirect()->back()->with('message', $msg);
     }
 }

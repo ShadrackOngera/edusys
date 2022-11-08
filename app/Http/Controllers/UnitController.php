@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RegUnit;
 use App\Models\Unit;
 use Illuminate\Http\Request;
 

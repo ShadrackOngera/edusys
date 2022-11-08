@@ -43,7 +43,7 @@ Route::group(['middleware' => ['role:staff|admin']], function () {
     //units
     Route::get('/admin/units', [App\Http\Controllers\UnitController::class, 'index'])->name('units.index');
     Route::get('/admin/units/{id}/edit', [App\Http\Controllers\UnitController::class, 'edit'])->name('units.edit');
-    Route::post('/admin/units/create', [App\Http\Controllers\UnitController::class, 'create'])->name('units.create');
+    Route::get('/admin/units/create', [App\Http\Controllers\UnitController::class, 'create'])->name('units.create');
     Route::put('/admin/units/{id}/edit', [App\Http\Controllers\UnitController::class, 'update'])->name('units.update');
     Route::post('/admin/units/store', [App\Http\Controllers\UnitController::class, 'store'])->name('units.store');
     Route::delete('/admin/units/{id}/delete', [App\Http\Controllers\UnitController::class, 'destroy'])->name('units.destroy');
@@ -63,7 +63,7 @@ Route::get('/how-to', [App\Http\Controllers\PagesController::class, 'howPage'])-
 Route::resource('chats', \App\Http\Controllers\ChatsController::class);
 
 
-Route::post('/register-units/store', [App\Http\Controllers\RegUnitsController::class, 'store'])->name('regUnits.post');
+Route::post('/register-units/store', [App\Http\Controllers\RegUnitsController::class, 'store'])->name('regUnits.store');
 Route::put('/register-units/{id}/update', [App\Http\Controllers\RegUnitsController::class, 'update'])->name('regUnits.update');
 Route::delete('/register-units/{id}/deregister', [App\Http\Controllers\RegUnitsController::class, 'destroy'])->name('regUnits.destroy');
 //Route::resource('regUnits', \App\Http\Controllers\RegUnitsController::class);

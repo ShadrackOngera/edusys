@@ -18,6 +18,7 @@ class Unit extends Model
 
     public function regUnit()
     {
-        return $this->hasOne(RegUnit::class);
+        return $this->hasMany(RegUnit::class);
     }
+
 }

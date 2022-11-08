@@ -2,6 +2,20 @@
 @section('content')
     <div>
         <div class="container">
+            <div class="dropdown mb-5">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    All Units
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach($units as $unit)
+                        <li><a class="dropdown-item" href="#">{{ $unit->programme }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
             <table class="table">
                 <thead>
                     <tr>
@@ -21,7 +35,7 @@
                             <td>{{ $unit->description }}</td>
                             <td>
                                 @if($unit->regUnit()->where('user_id', auth()->user()->id)->exists())
-                                    <form action="{{ route('regUnits.destroy', $unit->id) }}" method="POST">
+                                    <form action="{{ route('regUnits.destroy', $unit->regUnit()->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-outline-danger">
@@ -29,7 +43,7 @@
                                         </button>
                                     </form>
                                 @else
-                                    <form action="{{ route('regUnits.post') }}" method="POST">
+                                    <form action="{{ route('regUnits.store') }}" method="POST">
                                         @csrf
                                         <input type="text" hidden value="{{ $unit->id }}" name="unit_id">
                                         <input type="text" hidden value="{{ $unit->programme }}" name="programme">
