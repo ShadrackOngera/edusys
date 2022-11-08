@@ -12,8 +12,9 @@
                         <th scope="col">Programme</th>
                         <th scope="col">Unit Code</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Cat score (<span class="fst-italic"> x/30 </span>)</th>
-                        <th scope="col">Exam score (<span class="fst-italic"> x/70 </span>)</th>
+                        <th scope="col">Cat(<span class="fst-italic"> x/30 </span>)</th>
+                        <th scope="col">Exam(<span class="fst-italic"> x/70 </span>)</th>
+                        <th scope="col">Total</th>
                         <th scope="col">Grade</th>
                         <th scope="col">Comment</th>
                         @can('create result')
@@ -39,28 +40,28 @@
                                 {{ $score = $result->score_two + $result->score_one }}
                             </td>
                             <td>
-                                @if($result->score == null)
+                                @if( $score == null)
                                     <span>Not Graded</span>
-                                @elseif($result->score < 40)
+                                @elseif($score < 40)
                                     <span>E</span>
-                                @elseif($result->score < 50)
+                                @elseif($score < 50)
                                     <span>D</span>
-                                @elseif($result->score < 60)
+                                @elseif($score < 60)
                                     <span>C</span>
-                                @elseif($result->score < 100)
+                                @elseif($score < 100)
                                     <span>A</span>
                                 @endif
                             </td>
                             <td>
-                                @if($result->score == null)
+                                @if($score == null)
                                     <span>No Results Yet</span>
-                                @elseif($result->score <= 25)
+                                @elseif($score <= 25)
                                     <span>Fail</span>
-                                @elseif($result->score <= 50)
+                                @elseif($score <= 50)
                                     <span>Average</span>
-                                @elseif($result->score <= 75)
+                                @elseif($score <= 75)
                                     <span>Good</span>
-                                @elseif($result->score <= 90)
+                                @elseif($score <= 90)
                                     <span>Excellent</span>
                                 @endif
                             </td>
