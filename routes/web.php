@@ -54,7 +54,7 @@ Route::group(['middleware' => ['role:staff|admin']], function () {
 //    Route::resource('units', \App\Http\Controllers\UnitController::class);
 
 
-    Route::get('/admin/users', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('users.all');
+    Route::get('/admin/users/', [App\Http\Controllers\AdminController::class, 'allUsers'])->name('users.all');
     Route::get('/admin/registered', [App\Http\Controllers\AdminController::class, 'allRegisterdUnits'])->name('regUNits.all');
     Route::get('/admin', [App\Http\Controllers\HomeController::class, 'homeAdmin'])->name('home.admin');
 });

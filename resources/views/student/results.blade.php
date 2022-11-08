@@ -12,7 +12,8 @@
                         <th scope="col">Programme</th>
                         <th scope="col">Unit Code</th>
                         <th scope="col">Description</th>
-                        <th scope="col">score (<span class="fst-italic"> x/100 </span>)</th>
+                        <th scope="col">Cat score (<span class="fst-italic"> x/30 </span>)</th>
+                        <th scope="col">Exam score (<span class="fst-italic"> x/70 </span>)</th>
                         <th scope="col">Grade</th>
                         <th scope="col">Comment</th>
                         @can('create result')
@@ -29,7 +30,13 @@
                             <td>{{ $result->unit }}</td>
                             <td>{{ $result->description }}</td>
                             <td>
-                                {{ $result->score }}
+                                {{ $result->score_one }}
+                            </td>
+                            <td>
+                                {{ $result->score_two }}
+                            </td>
+                            <td>
+                                {{ $score = $result->score_two + $result->score_one }}
                             </td>
                             <td>
                                 @if($result->score == null)

@@ -6,6 +6,7 @@ use App\Models\Chat;
 use App\Models\RegUnit;
 use App\Models\User;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\Constraint\Count;
 use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
@@ -29,11 +30,11 @@ class AdminController extends Controller
     public function allChats(){
 
         $chats = Chat::orderBy('updated_at', 'ASC')->paginate(10)->groupBy('chat_id');
-
         return view('admin.chats')->with('chats', $chats );
     }
 
     public function allRegisterdUnits(){
+
 
         $regUNits = RegUnit::orderBy('updated_at', 'DESC')->with('user')->get();
         return view('admin.regUnits')->with('regUnits', $regUNits );
@@ -85,4 +86,5 @@ class AdminController extends Controller
 
         return redirect('/admin/users')->with('message', $msg);
     }
+
 }

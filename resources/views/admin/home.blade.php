@@ -18,12 +18,12 @@
                     </div>
                 </div>
                 <div class="col-sm-9">
-                    <div class="row text-center">
+                    <div class="row text-center mb-5">
                         <div class="col-sm-4">
                             <div class="card shadow border-0 h-100 mb-3 rounded-3 py-5">
-                                <h3 class="mb-3">Total Number of Units Registered</h3>
+                                <h3 class="mb-3">Total Number of Units</h3>
                                 <p>
-                                    56
+                                    {{$units_count}}
                                 </p>
                             </div>
                         </div>
@@ -31,15 +31,33 @@
                             <div class="card shadow border-0 h-100 mb-3 rounded-3 py-5">
                                 <h3 class="mb-3">Total Number of Students Registered</h3>
                                 <p>
-                                    516
+                                    {{ $students_count }}
                                 </p>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="card shadow border-0 h-100 mb-3 rounded-3 py-5">
-                                <h3 class="mb-3">Total Number of mails in Mailing list</h3>
+                                <h3 class="mb-3">Total Number of Admin</h3>
                                 <p>
-                                    16
+                                    {{ $admin_count }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-sm-6">
+                            <div class="card shadow border-0 h-100 mb-3 rounded-3 py-5">
+                                <h3 class="mb-3">Total Number of Staff</h3>
+                                <p>
+                                    {{ $staff_count }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card shadow border-0 h-100 mb-3 rounded-3 py-5">
+                                <h3 class="mb-3">Total Number of Users</h3>
+                                <p>
+                                    {{ $users_count }}
                                 </p>
                             </div>
                         </div>

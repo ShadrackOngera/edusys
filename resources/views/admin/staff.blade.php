@@ -17,7 +17,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Account Type</th>
                         @can('make admin')
                             <th scope="col">Make Staff</th>
                             <th scope="col">Make Admin</th>
@@ -31,7 +30,6 @@
                             <th scope="row">{{ $user->id }}</th>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>{{ $user->type }}</td>
                             @can('make admin')
                                 <td>
                                     <form action="{{ route('make.staff') }}" method="post">

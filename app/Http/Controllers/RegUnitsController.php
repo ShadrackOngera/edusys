@@ -20,7 +20,6 @@ class RegUnitsController extends Controller
     public function index()
     {
         $units = Unit::orderBy('updated_at', 'DESC')->with(['regUnit'])->paginate(15);
-
         return view('student.register')->with('units', $units);
     }
 
@@ -47,7 +46,8 @@ class RegUnitsController extends Controller
             'programme' => 'required',
             'unit' => 'required',
             'description' => 'required',
-            'score' => ['min:1',],
+            'score_one' => ['min:1', 'max:30'],
+            'score_two' => ['min:1','max:70'],
         ]);
 
 
@@ -58,7 +58,8 @@ class RegUnitsController extends Controller
             'unit' => $request->input('unit'),
             'description' => $request->input('description'),
             'unit_id' => $request->input('unit_id'),
-            'score' => $request->input('score'),
+            'score_one' => $request->input('score'),
+            'score_two' => $request->input('score'),
             'user_id' => auth()->user()->id,
         ]);
 
@@ -98,13 +99,23 @@ class RegUnitsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'unit_id' => 'required',
+            'programme' => 'required',
+            'unit' => 'required',
+            'description' => 'required',
+            'score_one' => ['min:1', 'max:30'],
+            'score_two' => ['min:1','max:70'],
+        ]);
+
         RegUnit::where('id', $id)
             ->update([
                 'unit_id' => $request->input('unit_id'),
                 'programme' => $request->input('programme'),
                 'unit' => $request->input('unit'),
                 'description' => $request->input('description'),
-                'score' => $request->input('score'),
+                'score_one' => $request->input('score_one'),
+                'score_two' => $request->input('score_two'),
             ]);
 
 
