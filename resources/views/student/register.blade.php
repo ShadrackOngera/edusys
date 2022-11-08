@@ -35,7 +35,7 @@
                             <td>{{ $unit->description }}</td>
                             <td>
                                 @if($unit->regUnit()->where('user_id', auth()->user()->id)->exists())
-                                    <form action="{{ route('regUnits.destroy', $unit->regUnit()->id) }}" method="POST">
+                                    <form action="{{ route('regUnits.destroy', $unit->regUnit[0]->id) }}" method="POST">
                                         @csrf
                                         @method('delete')
                                         <button class="btn btn-outline-danger">

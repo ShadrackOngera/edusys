@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegUnit;
 use App\Models\Unit;
+use App\Models\RegUnit;
 use Illuminate\Http\Request;
 
 class RegUnitsController extends Controller
@@ -19,7 +19,6 @@ class RegUnitsController extends Controller
      */
     public function index()
     {
-
         $units = Unit::orderBy('updated_at', 'DESC')->with(['regUnit'])->paginate(15);
 
         return view('student.register')->with('units', $units);
@@ -52,7 +51,7 @@ class RegUnitsController extends Controller
         ]);
 
 
-//        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+        //        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
 
         $unit = RegUnit::create([
             'programme' => $request->input('programme'),
