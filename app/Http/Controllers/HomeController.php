@@ -33,7 +33,12 @@ class HomeController extends Controller
         $admin_count = User::role('student')->count();
         $staff_count = User::role('staff')->count();
         $students_count = User::role('student')->count();
-        return view('admin.home')->with('students_count', $students_count)->with('units_count', $units_count)->with('admin_count', $admin_count)->with('staff_count', $staff_count)->with('users_count', $users_count);
+        return view('admin.home')
+            ->with('students_count', $students_count)
+            ->with('units_count', $units_count)
+            ->with('admin_count', $admin_count)
+            ->with('staff_count', $staff_count)
+            ->with('users_count', $users_count);
     }
 
     public function home()
